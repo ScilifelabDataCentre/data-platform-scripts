@@ -20,12 +20,12 @@ def validate_request(url, target):
     return r
 
 sll_jobs_url = "https://www.scilifelab.se/wp-json/wp/v2/career?categories=7663&orderby=archive_date&per_page=50"
-dc_git_jobs_url = "https://raw.githubusercontent.com/ScilifelabDataCentre/data.scilifelab.se/develop/data/jobs.json"
+dc_jobs_url = "https://blobserver.dc.scilifelab.se/blob/data_platform_jobs.json"
 
 #try and get jobs from scilifelab and data centre platform
 
 sll_jobs_request = validate_request(sll_jobs_url, "Scilifelab")
-dc_jobs_request = validate_request(dc_git_jobs_url, "DC")
+dc_jobs_request = validate_request(dc_jobs_url, "DC")
 
 dc_all_jobs = dc_jobs_request.json()
 dc_open_jobs = []
