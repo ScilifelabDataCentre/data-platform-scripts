@@ -1,4 +1,4 @@
-## Fetching available new DDLS jobs listed in scilifelab website 
+## Fetching available new DDLS jobs listed in scilifelab website
 ## and create a new json file, where the content can be copy
 ## pasted (upon review) to data/jobs.json on the platform repo
 
@@ -8,10 +8,12 @@ import sys
 
 from datetime import datetime
 
+
 def date_not_past_today(date_str):
     given_date = datetime.strptime(date_str, "%Y-%m-%d").date()
     today_date = datetime.now().date()
     return given_date >= today_date
+
 
 def validate_request(url, target):
     r = requests.get(url)
@@ -19,10 +21,13 @@ def validate_request(url, target):
         sys.exit("Fetching jobs from {} failed, check the URL {}".format(url, target))
     return r
 
-sll_jobs_url = "https://www.scilifelab.se/wp-json/wp/v2/career?categories=7663&orderby=archive_date&per_page=50"
+
+sll_jobs_url = (
+    "https://www.scilifelab.se/wp-json/wp/v2/career?orderby=archive_date&per_page=50"
+)
 dc_jobs_url = "https://blobserver.dc.scilifelab.se/blob/data_platform_jobs.json"
 
-#try and get jobs from scilifelab and data centre platform
+# try and get jobs from scilifelab and data centre platform
 
 sll_jobs_request = validate_request(sll_jobs_url, "Scilifelab")
 dc_jobs_request = validate_request(dc_jobs_url, "DC")
@@ -50,7 +55,7 @@ while page_num <= sll_jobs_total_pages:
                     "app_deadline": job["archive_date"],
                     "employer": job["acf"]["university"]["title"],
                     "job_url": job_ext_url,
-                    "description": ""
+                    "description": "",
                 }
                 sll_new_open_jobs.append(job_info)
         else:
@@ -58,6 +63,8 @@ while page_num <= sll_jobs_total_pages:
     page_num += 1
 
 if len(sll_new_open_jobs) == 0:
-    print("There is no new jobs to add, all open jobs in scilifelab are already in DC platform")
+    print(
+        "There are no new jobs to add, all open jobs in scilifelab are already in DC platform"
+    )
 else:
     print(json.dumps(sll_new_open_jobs, indent=4, ensure_ascii=False))
