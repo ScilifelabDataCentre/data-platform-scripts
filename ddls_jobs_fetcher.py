@@ -64,7 +64,7 @@ while page_num <= sll_jobs_total_pages:
 
 if len(sll_new_open_jobs) == 0:
     print(
-        "There is no new jobs to add, all open jobs in scilifelab are already in DC platform"
+        "There are no new jobs to add, all open jobs in scilifelab are already in DC platform"
     )
 else:
     print(json.dumps(sll_new_open_jobs, indent=4, ensure_ascii=False))
