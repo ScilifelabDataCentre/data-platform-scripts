@@ -19,7 +19,7 @@ python ddls_jobs_fetcher.py > latest_ddls_jobs.json
 
 ### events_fetcher.py
 
-This scripts collects all upcoming events listed in [scilifelab website](https://www.scilifelab.se/events) but not yet in platform [events page](https://data.scilifelab.se/events/). The output is list of events in JSON format, that can be copy pasted (upon review) to the event's [data file](https://blobserver.dc.scilifelab.se/blob/data_platform_events.json/info) of he platform.
+This script collects all upcoming events listed in the [SciLifeLab website](https://www.scilifelab.se/events), but not yet in the corresponding platform [events page](https://data.scilifelab.se/events/). The output is list of events in JSON format, that can be copy pasted (upon review) to the event's [data file](https://blobserver.dc.scilifelab.se/blob/data_platform_events.json/info), which is used to build the platform's events page.
 
 **Usage:**
 
