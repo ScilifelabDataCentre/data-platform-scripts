@@ -3,7 +3,7 @@ This repository holds the scripts produced for the SciLifeLab Data Platform, tha
 
 ### ddls_jobs_fetcher.py
 
-This script collects the DDLS jobs that are available in [scilifelab job lisitng](https://www.scilifelab.se/careers?filter=ddls) but not yet in the platform [jobs page](https://data.scilifelab.se/jobs/). The output is list of jobs in JSON format, that can be copy pasted (upon review) to the job's [data file](https://blobserver.dc.scilifelab.se/blob/data_platform_jobs.json/info) of the platform.
+This script collects the jobs that are available in [SciLifeLab jobs page](https://www.scilifelab.se/careers?filter=ddls), but not yet on the corresponding platform [jobs page](https://data.scilifelab.se/jobs/). The output is list of jobs in JSON format that can be copy pasted (upon review) to the job's [data file](https://blobserver.dc.scilifelab.se/blob/data_platform_jobs.json/info) used for the platform.
 
 **Usage:**
 
