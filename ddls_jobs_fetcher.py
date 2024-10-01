@@ -47,14 +47,17 @@ while page_num <= sll_jobs_total_pages:
     sll_all_jobs = sll_jobs_request.json()
     for job in sll_all_jobs:
         if date_not_past_today(job["archive_date"]):
-            job_ext_url = job["acf"]["read_more_external_link"]["url"]
-            if job_ext_url not in dc_open_jobs:
+            try:
+                job_url = job["acf"]["read_more_external_link"]["url"]
+            except:
+                job_url = job["link"]
+            if job_url not in dc_open_jobs:
                 job_info = {
                     "title": job["title"]["rendered"],
                     "type": [],
                     "app_deadline": job["archive_date"],
                     "employer": job["acf"]["university"]["title"],
-                    "job_url": job_ext_url,
+                    "job_url": job_url,
                     "description": "",
                 }
                 sll_new_open_jobs.append(job_info)
