@@ -59,7 +59,7 @@ while page_num <= sll_jobs_total_pages:
                     "job_url": job_url,
                     "description": "",
                 }
-                u_list = [univ["university"]["title"].strip() for univ in job["acf"]["university_lists"]]
+                u_list = [univ["university"]["title"].strip() for univ in job["acf"]["university_lists"] if univ["university"]]
                 job_info["employer"] = ", ".join(u_list)
                 sll_new_open_jobs.append(job_info)
         else:
